@@ -297,36 +297,39 @@
     }
 
     #exerciseContainer {
-        width: 80vw;
+        width: 90vw;
         height: 80vh;
         padding: 2vh 2vw;
         border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .circle-container {
-        width: 80vmin;
-        height: 80vmin;
-        max-width: 90vw;
-        max-height: 90vw;
-        margin: 2vh 0;
+        width: 70vmin;
+        height: 70vmin;
+        max-width: 80vw;
+        max-height: 80vw;
+        margin: 1vh 0;
     }
 
     .timer-text {
-        font-size: clamp(24px, 5vw, 36px);
-        margin-bottom: 2vh;
+        font-size: clamp(20px, 4vw, 28px);
+        margin-bottom: 1vh;
     }
 
     .button-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 1vh;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1vh 2vw;
     }
 
     .button-container .button {
-        width: 80%;
-        padding: 1.5vh 3vw;
-        font-size: clamp(16px, 3vw, 20px);
-        min-width: unset;
+        width: auto;
+        padding: 1vh 2vw;
+        font-size: clamp(14px, 2.5vw, 18px);
     }
 }
 
@@ -372,23 +375,28 @@
     }
 
     #exerciseContainer {
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
+        width: 95vw;
+        height: 90vh;
+        border-radius: 15px;
+        padding: 2vh 2vw;
     }
 
     .circle-container {
-        width: 90vmin;
-        height: 90vmin;
+        width: 60vmin;
+        height: 60vmin;
     }
 
     .timer-text {
-        font-size: clamp(20px, 4.5vw, 28px);
+        font-size: clamp(18px, 4vw, 24px);
+    }
+
+    .phase-text, .phase-timer-text {
+        font-size: clamp(14px, 2.5vw, 20px);
     }
 
     .button-container .button {
-        width: 90%;
-        font-size: clamp(14px, 2.5vw, 18px);
+        padding: 1vh 3vw;
+        font-size: clamp(12px, 2vw, 16px);
     }
 }
     </style>
