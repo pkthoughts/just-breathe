@@ -236,87 +236,132 @@
         .breathe-circle {
           z-index: 2;
         }
-            @media screen and (max-width: 768px) {
-        .header {
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            font-size: clamp(36px, 8vw, 56px);
-        }
-
-        .tagline {
-            font-size: clamp(16px, 3vw, 20px);
-        }
-
-        #startButton {
-            font-size: clamp(18px, 4vw, 24px);
-            padding: 12px 24px;
-        }
-
-        #formContainer, #exerciseContainer {
-            width: 95%;
-            padding: 3vh 3vw;
-        }
-
-        .circle-container {
-            width: 90vmin;
-            height: 90vmin;
-            margin: 2vh 0;
-        }
-
-        .phase-text, .phase-timer-text {
-            font-size: clamp(20px, 4vw, 32px);
-        }
-
-        .button-container .button {
-            padding: 1.5vh 3vw;
-            font-size: clamp(16px, 3vw, 20px);
-            min-width: 100px;
-        }
+        @media screen and (max-width: 768px) {
+    body, html {
+        font-size: 16px;
     }
 
-    @media screen and (max-width: 480px) {
-        .logo {
-            font-size: clamp(28px, 7vw, 36px);
-        }
-
-        .tagline {
-            font-size: clamp(14px, 2.5vw, 16px);
-        }
-
-        #startButton {
-            font-size: clamp(16px, 3.5vw, 20px);
-            padding: 10px 20px;
-        }
-
-        form label {
-            font-size: clamp(10px, 1.8vw, 14px);
-        }
-
-        input, select {
-            font-size: clamp(10px, 1.6vw, 12px);
-        }
-
-        .button {
-            font-size: clamp(12px, 1.8vw, 16px);
-        }
-
-        .timer-text {
-            font-size: clamp(24px, 5vw, 36px);
-        }
-
-        .phase-text, .phase-timer-text {
-            font-size: clamp(18px, 3.5vw, 28px);
-        }
-
-        .button-container .button {
-            padding: 1.2vh 2.5vw;
-            font-size: clamp(14px, 2.5vw, 18px);
-            min-width: 80px;
-        }
+    .header {
+        margin-bottom: 4vh;
     }
 
+    .logo {
+        font-size: clamp(32px, 7vw, 48px);
+    }
+
+    .tagline {
+        font-size: clamp(14px, 2.5vw, 18px);
+    }
+
+    #startButton {
+        font-size: clamp(16px, 3.5vw, 22px);
+        padding: 12px 24px;
+    }
+
+    #formContainer, #exerciseContainer {
+        width: 90%;
+        max-width: none;
+        padding: 4vh 5vw;
+        overflow-y: auto;
+        max-height: 80vh;
+    }
+
+    form {
+        gap: 2vh;
+    }
+
+    form label {
+        font-size: clamp(14px, 2.2vw, 16px);
+    }
+
+    input, select {
+        font-size: clamp(14px, 2vw, 16px);
+        padding: 1.5vh 2vw;
+    }
+
+    .circle-container {
+        width: 80vmin;
+        height: 80vmin;
+        margin: 3vh 0;
+    }
+
+    .timer-text {
+        font-size: clamp(28px, 5vw, 40px);
+    }
+
+    .phase-text, .phase-timer-text {
+        font-size: clamp(18px, 3.5vw, 28px);
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2vh;
+    }
+
+    .button-container .button {
+        width: 80%;
+        padding: 1.5vh 3vw;
+        font-size: clamp(16px, 3vw, 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body, html {
+        font-size: 14px;
+    }
+
+    .logo {
+        font-size: clamp(28px, 6vw, 36px);
+    }
+
+    .tagline {
+        font-size: clamp(12px, 2.2vw, 14px);
+    }
+
+    #startButton {
+        font-size: clamp(14px, 3vw, 18px);
+        padding: 10px 20px;
+    }
+
+    #formContainer, #exerciseContainer {
+        width: 95%;
+        padding: 3vh 4vw;
+    }
+
+    form label {
+        font-size: clamp(12px, 2vw, 14px);
+    }
+
+    input, select {
+        font-size: clamp(12px, 1.8vw, 14px);
+        padding: 1.2vh 1.5vw;
+    }
+
+    .button {
+        font-size: clamp(14px, 2.2vw, 16px);
+        padding: 1.2vh 2.5vw;
+    }
+
+    .timer-text {
+        font-size: clamp(24px, 4.5vw, 32px);
+    }
+
+    .phase-text, .phase-timer-text {
+        font-size: clamp(16px, 3vw, 24px);
+    }
+
+    .circle-container {
+        width: 85vmin;
+        height: 85vmin;
+    }
+
+    .button-container .button {
+        width: 90%;
+        font-size: clamp(14px, 2.5vw, 18px);
+        padding: 1.2vh 2.5vw;
+    }
+}
     </style>
 </head>
 <body>
