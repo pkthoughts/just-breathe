@@ -71,11 +71,16 @@ class BreathingExercise {
   }
 
   handleRestart() {
+      this.stopAllAudio();
       this.timeLeft = this.totalTime;
       this.currentPhase = 'inhale';
       this.phaseTimeLeft = this.inhaleTime;
       this.breatheAnim = 0;
       this.updateUI();
+      // Add a small delay before playing the first inhale sound
+      setTimeout(() => {
+        this.playSound('inhale', this.inhaleTime);
+      }, 1);
   }
 
   startTimers() {
@@ -96,17 +101,36 @@ class BreathingExercise {
       }, 1000 / this.speed);
   }
 
+  stopAllAudio() {
+    const audioElements = document.querySelectorAll('audio');
+    audioElements.forEach(audio => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
+  }
+  
+
   playSound(phase, duration) {
     const audio = new Audio(`${phase}.mp3`);
-    audio.playbackRate = this.inhaleTime / duration;audio.loop = true; // Make the audio loop
+    audio.playbackRate = this.inhaleTime / duration;
+    audio.loop = true;
     audio.play();
     
-      // Stop the audio when the phase ends
-      setTimeout(() => {
-        audio.pause();
-        audio.currentTime = 0;
+    if (!this.audioElements) {
+      this.audioElements = [];
+    }
+    this.audioElements.push(audio);
+  
+    setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0;
+      const index = this.audioElements.indexOf(audio);
+      if (index > -1) {
+        this.audioElements.splice(index, 1);
+      }
     }, duration * 1000 / this.speed);
-} 
+  }
+  
 
 
   changePhase() {
