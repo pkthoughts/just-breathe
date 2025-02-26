@@ -1,0 +1,240 @@
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    touch-action: manipulation;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background: #f8f9fa;
+    color: #2c3e50;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Screen Containers */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    display: none;
+    flex-direction: column;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Home Screen */
+.home-screen {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.app-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+.app-title-01 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #a8adb2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Configuration Modal */
+.config-modal {
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.progress-indicator {
+    transition: none !important; /* Remove any interfering transitions */
+}
+
+
+/* Form Styles */
+.exercise-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Exercise Screen */
+.exercise-screen {
+    background: white;
+}
+
+.exercise-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.total-timer {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #3498db;
+}
+
+.progress-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.progress-circle {
+    width: 80vmin;
+    height: 80vmin;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.progress-track {
+    fill: none;
+    stroke: #ecf0f1;
+    stroke-width: 8;
+}
+
+.progress-indicator {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.3s linear;
+    stroke: #3498db;
+}
+
+.phase-display {
+    position: absolute;
+    text-align: center;
+}
+
+.phase-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.phase-timer {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.exercise-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+/* Button Styles */
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #3498db;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+}
+
+.control-btn {
+    min-width: 120px;
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    .app-title {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .phase-name {
+        font-size: 1.2rem;
+    }
+    
+    .phase-timer {
+        font-size: 2rem;
+    }
+}
