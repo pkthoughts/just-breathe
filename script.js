@@ -113,7 +113,11 @@ class BreathingExercise {
     }
 
     updatePhaseDisplay() {
-        this.phaseNameElement.textContent = this.currentPhase.toUpperCase();
+        let phaseName = this.currentPhase;
+        if (phaseName === 'holdInhale' || phaseName === 'holdExhale') {
+            phaseName = 'Hold';
+        }
+        this.phaseNameElement.textContent = phaseName.toUpperCase();
         this.updateCircleColor();
         this.phaseTimerElement.textContent = this.phases[this.currentPhase];
     }
