@@ -58,7 +58,7 @@
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
 
-        #formContainer, #exerciseContainer {
+        #formContainer {
             display: none;
             position: fixed;
             top: 50%;
@@ -70,6 +70,23 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow-y: auto;
         }
+
+        #exerciseContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 4vh 4vw;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    width: 90vw;
+    max-width: 800px;
+    height: 90vh;
+    max-height: 900px;
+    overflow-y: auto;
+}
 
         #formContainer {
             display: none;
@@ -258,7 +275,7 @@
         padding: 12px 24px;
     }
 
-    #formContainer, #exerciseContainer {
+    #formContainer {
         width: 90%;
         max-width: none;
         padding: 4vh 5vw;
@@ -279,30 +296,37 @@
         padding: 1.5vh 2vw;
     }
 
+    #exerciseContainer {
+        width: 95vw;
+        height: 95vh;
+        padding: 2vh 2vw;
+        border-radius: 20px;
+    }
+
     .circle-container {
         width: 80vmin;
         height: 80vmin;
-        margin: 3vh 0;
+        max-width: 90vw;
+        max-height: 90vw;
+        margin: 2vh 0;
     }
 
     .timer-text {
-        font-size: clamp(28px, 5vw, 40px);
-    }
-
-    .phase-text, .phase-timer-text {
-        font-size: clamp(18px, 3.5vw, 28px);
+        font-size: clamp(24px, 5vw, 36px);
+        margin-bottom: 2vh;
     }
 
     .button-container {
         flex-direction: column;
         align-items: center;
-        gap: 2vh;
+        gap: 1vh;
     }
 
     .button-container .button {
         width: 80%;
         padding: 1.5vh 3vw;
         font-size: clamp(16px, 3vw, 20px);
+        min-width: unset;
     }
 }
 
@@ -324,7 +348,7 @@
         padding: 10px 20px;
     }
 
-    #formContainer, #exerciseContainer {
+    #formContainer {
         width: 95%;
         padding: 3vh 4vw;
     }
@@ -343,23 +367,28 @@
         padding: 1.2vh 2.5vw;
     }
 
-    .timer-text {
-        font-size: clamp(24px, 4.5vw, 32px);
-    }
-
     .phase-text, .phase-timer-text {
         font-size: clamp(16px, 3vw, 24px);
     }
 
+    #exerciseContainer {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
     .circle-container {
-        width: 85vmin;
-        height: 85vmin;
+        width: 90vmin;
+        height: 90vmin;
+    }
+
+    .timer-text {
+        font-size: clamp(20px, 4.5vw, 28px);
     }
 
     .button-container .button {
         width: 90%;
         font-size: clamp(14px, 2.5vw, 18px);
-        padding: 1.2vh 2.5vw;
     }
 }
     </style>
