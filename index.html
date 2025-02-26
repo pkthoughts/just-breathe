@@ -7,71 +7,57 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        body, html {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
-            color: #333;
-        }
-        
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+    color: #333;
+}
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-        .logo {
-            font-size: 56px;
-            font-weight: 600;
-            color: #00838f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            letter-spacing: 2px;
-        }
+.logo {
+    font-size: clamp(32px, 8vw, 56px);
+    font-weight: 600;
+    color: #00838f;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 2px;
+}
 
-        .tagline {
-            font-size: 20px;
-            color: #006064;
-            margin-top: 10px;
-            font-weight: 300;
-        }
+.tagline {
+    font-size: clamp(16px, 3vw, 20px);
+    color: #006064;
+    margin-top: 10px;
+    font-weight: 300;
+}
 
-        #startButton {
-            font-size: 24px;
-            padding: 15px 30px;
-            cursor: pointer;
-            background-color: #00acc1;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+#startButton {
+    font-size: clamp(18px, 4vw, 24px);
+    padding: 15px 30px;
+    cursor: pointer;
+    background-color: #00acc1;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-        #startButton:hover {
-            background-color: #007c91;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
+#startButton:hover {
+    background-color: #007c91;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
 
-        #formContainer {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 4vh 4vw;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow-y: auto;
-        }
-
-        #exerciseContainer {
+#formContainer, #exerciseContainer {
     display: none;
     position: fixed;
     top: 50%;
@@ -79,326 +65,199 @@
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.9);
     padding: 4vh 4vw;
-    border-radius: 30px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    max-height: 90vh;
+}
+
+#exerciseContainer {
     width: 90vw;
     max-width: 800px;
     height: 90vh;
     max-height: 900px;
-    overflow-y: auto;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-        #formContainer {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 3vh 3vw;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 400px;
-            height: auto;
-            max-height: 90vh;
-        }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    height: 80%;
+}
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5vh;
-            height: 80%;
-        }
-        form label {
-            font-size: clamp(12px, 2vw, 16px);
-            color: #006064;
-        }
+form label {
+    font-size: clamp(12px, 2vw, 16px);
+    color: #006064;
+}
 
-        input, select {
-            padding: 1vh 1.5vw;
-            font-size: clamp(12px, 1.8vw, 14px);
-            border: 1px solid #b2ebf2;
-            border-radius: 5px;
-            background-color: #e0f7fa;
-            color: #006064;
-        }
+input, select {
+    padding: 1vh 1.5vw;
+    font-size: clamp(12px, 1.8vw, 14px);
+    border: 1px solid #b2ebf2;
+    border-radius: 5px;
+    background-color: #e0f7fa;
+    color: #006064;
+}
 
-        .button {
-            background-color: #00acc1;
-            color: white;
-            margin-top: 2vh;
-            padding: 1.5vh 2vw;
-            font-size: clamp(14px, 2vw, 18px);
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+.button {
+    background-color: #00acc1;
+    color: white;
+    margin-top: 2vh;
+    padding: 1.5vh 2vw;
+    font-size: clamp(14px, 2vw, 18px);
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-        .button:hover {
-            background-color: #007c91;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
+.button:hover {
+    background-color: #007c91;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
 
-        #exerciseContainer {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 4vh 4vw;
-            border-radius: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            width: 90vw;
-            max-width: 800px;
-            height: 90vh;
-            max-height: 900px;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-        }
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
 
-        .timer-text {
-            font-size: clamp(32px, 6vw, 48px);
-            font-weight: 600;
-            margin-bottom: 3vh;
-            color: #00838f;
-        }
+.timer-text {
+    font-size: clamp(24px, 5vw, 48px);
+    font-weight: 600;
+    margin-bottom: 3vh;
+    color: #00838f;
+}
 
-        .circle-container {
-            position: relative;
-            width: 80vmin;
-            height: 80vmin;
-            max-width: 700px;
-            max-height: 700px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 4vh 0;
-        }
+.circle-container {
+    position: relative;
+    width: min(80vmin, 90vw);
+    height: min(80vmin, 90vw);
+    max-width: 700px;
+    max-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vh 0;
+}
 
-        .breathe-circle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, rgba(131, 197, 227, 0.7) 0%, 
-            rgba(131, 197, 227, 0.7) 100%);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
+.breathe-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, rgba(131, 197, 227, 0.7) 0%, rgba(131, 197, 227, 0.7) 100%);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
 
-        .text-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 90%;
-            word-wrap: break-word;
-        }   
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%;
+    word-wrap: break-word;
+}   
 
-        .phase-text, .phase-timer-text {
-            margin: 0;
-            font-size: clamp(24px, 5vw, 40px);
-            text-align: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+.phase-text, .phase-timer-text {
+    margin: 0;
+    font-size: clamp(18px, 4vw, 40px);
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
 
-        .phase-timer-text {
-            margin-top: 0.25vh;
-            font-weight: 600;
-        }
+.phase-timer-text {
+    margin-top: 0.25vh;
+    font-weight: 600;
+}
 
-        .button-container {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-top: 4vh;
-        }
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 4vh;
+}
 
-        .button-container .button {
-            padding: 2vh 4vw;
-            font-size: clamp(18px, 3vw, 24px);
-            border-radius: 50px;
-            min-width: 120px;
-        }
-        .outer-circle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            border: 2px solid rgb(255, 88, 88);
-            pointer-events: none;
-            transition: all 0.3s ease;
-        }
-        .outer-circle {
-          z-index: 1;
-        }
+.button-container .button {
+    padding: 1.5vh 3vw;
+    font-size: clamp(16px, 3vw, 24px);
+    border-radius: 50px;
+    min-width: 120px;
+}
 
-        .breathe-circle {
-          z-index: 2;
-        }
-        @media screen and (max-width: 768px) {
-    body, html {
-        font-size: 16px;
-    }
+.outer-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid rgb(255, 88, 88);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
 
-    .header {
-        margin-bottom: 4vh;
-    }
-
-    .logo {
-        font-size: clamp(32px, 7vw, 48px);
-    }
-
-    .tagline {
-        font-size: clamp(14px, 2.5vw, 18px);
-    }
-
-    #startButton {
-        font-size: clamp(16px, 3.5vw, 22px);
-        padding: 12px 24px;
-    }
-
-    #formContainer {
-        width: 90%;
-        max-width: none;
-        padding: 4vh 5vw;
-        overflow-y: auto;
-        max-height: 80vh;
-    }
-
-    form {
-        gap: 2vh;
-    }
-
-    form label {
-        font-size: clamp(14px, 2.2vw, 16px);
-    }
-
-    input, select {
-        font-size: clamp(14px, 2vw, 16px);
-        padding: 1.5vh 2vw;
-    }
-
+@media screen and (max-width: 768px) {
     #exerciseContainer {
-        width: 90vw;
-        height: 80vh;
+        width: 95vw;
+        height: 95vh;
         padding: 2vh 2vw;
         border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
 
     .circle-container {
-        width: 70vmin;
-        height: 70vmin;
-        max-width: 80vw;
-        max-height: 80vw;
+        width: 80vmin;
+        height: 80vmin;
         margin: 1vh 0;
     }
 
-    .timer-text {
-        font-size: clamp(20px, 4vw, 28px);
-        margin-bottom: 1vh;
-    }
-
     .button-container {
-        flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 1vh 2vw;
+        gap: 2vh;
     }
 
     .button-container .button {
-        width: auto;
-        padding: 1vh 2vw;
-        font-size: clamp(14px, 2.5vw, 18px);
+        flex: 1 1 40%;
+        min-width: 100px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    body, html {
-        font-size: 14px;
-    }
-
-    .logo {
-        font-size: clamp(28px, 6vw, 36px);
-    }
-
-    .tagline {
-        font-size: clamp(12px, 2.2vw, 14px);
-    }
-
-    #startButton {
-        font-size: clamp(14px, 3vw, 18px);
-        padding: 10px 20px;
-    }
-
-    #formContainer {
-        width: 95%;
-        padding: 3vh 4vw;
-    }
-
-    form label {
-        font-size: clamp(12px, 2vw, 14px);
-    }
-
-    input, select {
-        font-size: clamp(12px, 1.8vw, 14px);
-        padding: 1.2vh 1.5vw;
-    }
-
-    .button {
-        font-size: clamp(14px, 2.2vw, 16px);
-        padding: 1.2vh 2.5vw;
-    }
-
-    .phase-text, .phase-timer-text {
-        font-size: clamp(16px, 3vw, 24px);
-    }
-
-    #exerciseContainer {
-        width: 95vw;
-        height: 90vh;
-        border-radius: 15px;
-        padding: 2vh 2vw;
+    #formContainer, #exerciseContainer {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        padding: 2vh 4vw;
     }
 
     .circle-container {
-        width: 60vmin;
-        height: 60vmin;
-    }
-
-    .timer-text {
-        font-size: clamp(18px, 4vw, 24px);
-    }
-
-    .phase-text, .phase-timer-text {
-        font-size: clamp(14px, 2.5vw, 20px);
+        width: 90vmin;
+        height: 90vmin;
     }
 
     .button-container .button {
-        padding: 1vh 3vw;
-        font-size: clamp(12px, 2vw, 16px);
+        flex: 1 1 100%;
+        font-size: clamp(14px, 2.5vw, 18px);
     }
 }
+
     </style>
 </head>
 <body>

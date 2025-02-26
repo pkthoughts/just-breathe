@@ -203,10 +203,12 @@ class BreathingExercise {
     this.phaseText.textContent = this.getDisplayPhase(this.currentPhase);
     this.phaseTimerText.textContent = this.phaseTimeLeft;
 
-    const minCircleSize = 100;
-    const maxCircleSize = 300;
+    const containerSize = Math.min(this.breatheCircle.parentNode.offsetWidth, this.breatheCircle.parentNode.offsetHeight);
+    const minCircleSize = containerSize * 0.3;
+    const maxCircleSize = containerSize * 0.9;
     const circleSize = minCircleSize + (this.breatheAnim * (maxCircleSize - minCircleSize));
-    const fontSize = Math.max(16, Math.min(32, circleSize * 0.15));
+    const fontSize = Math.max(16, Math.min(24, circleSize * 0.15));
+
 
     this.breatheCircle.style.width = `${circleSize}px`;
     this.breatheCircle.style.height = `${circleSize}px`;
