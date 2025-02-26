@@ -307,7 +307,9 @@
                 holdExhaleTime,
                 speed,
                 function() { 
-                    showNotification('Exercise finished!');
+                  setInterval(() => {
+                        alert("Exercise Finished!!!");
+                    }, 1000);
                     exerciseContainer.style.display = 'none';
                     startButton.style.display = 'block';
                 }
@@ -316,25 +318,6 @@
             exerciseContainer.innerHTML = '';
             exerciseContainer.appendChild(exercise.container);
         });
-
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.textContent = message;
-            notification.style.position = 'fixed';
-            notification.style.top = '20px';
-            notification.style.left = '50%';
-            notification.style.transform = 'translateX(-50%)';
-            notification.style.backgroundColor = '#00acc1';
-            notification.style.color = 'white';
-            notification.style.padding = '10px 20px';
-            notification.style.borderRadius = '5px';
-            notification.style.zIndex = '1000';
-            document.body.appendChild(notification);
-
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
 
     </script>
 </body>

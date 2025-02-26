@@ -28,10 +28,7 @@ class BreathingExercise {
       this.exhaleTime = exhaleTime;
       this.holdExhaleTime = holdExhaleTime;
       this.speed = speed;
-      this.onFinish = () => {
-        onFinish();
-        window.location.href = '/'; // Redirect to home page
-    };
+      this.onFinish = onFinish;
 
       this.timeLeft = totalTime;
       this.currentPhase = 'inhale';
