@@ -6,7 +6,7 @@
     <title>Just Breathe - Breathing Exercise</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-    
+
         body, html {
             height: 100%;
             margin: 0;
@@ -17,34 +17,32 @@
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
             color: #333;
-            -webkit-tap-highlight-color: transparent;
         }
-    
+        
+
         .header {
             text-align: center;
             margin-bottom: 40px;
-            padding: 0 20px;
         }
-    
+
         .logo {
-            font-size: clamp(36px, 8vw, 56px);
+            font-size: 56px;
             font-weight: 600;
             color: #00838f;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             letter-spacing: 2px;
-            line-height: 1.2;
         }
-    
+
         .tagline {
-            font-size: clamp(16px, 3vw, 20px);
+            font-size: 20px;
             color: #006064;
             margin-top: 10px;
             font-weight: 300;
         }
-    
+
         #startButton {
-            font-size: clamp(18px, 4vw, 24px);
-            padding: clamp(12px, 3vw, 15px) clamp(20px, 6vw, 30px);
+            font-size: 24px;
+            padding: 15px 30px;
             cursor: pointer;
             background-color: #00acc1;
             color: white;
@@ -52,9 +50,14 @@
             border-radius: 30px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            -webkit-appearance: none;
         }
-    
+
+        #startButton:hover {
+            background-color: #007c91;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
         #formContainer, #exerciseContainer {
             display: none;
             position: fixed;
@@ -65,26 +68,107 @@
             padding: 4vh 4vw;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        #formContainer {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 3vh 3vw;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             width: 90%;
             max-width: 400px;
-            overflow: hidden;
-            backface-visibility: hidden;
-            -webkit-overflow-scrolling: touch;
+            height: auto;
+            max-height: 90vh;
         }
-    
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh;
+            height: 80%;
+        }
+        form label {
+            font-size: clamp(12px, 2vw, 16px);
+            color: #006064;
+        }
+
+        input, select {
+            padding: 1vh 1.5vw;
+            font-size: clamp(12px, 1.8vw, 14px);
+            border: 1px solid #b2ebf2;
+            border-radius: 5px;
+            background-color: #e0f7fa;
+            color: #006064;
+        }
+
+        .button {
+            background-color: #00acc1;
+            color: white;
+            margin-top: 2vh;
+            padding: 1.5vh 2vw;
+            font-size: clamp(14px, 2vw, 18px);
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .button:hover {
+            background-color: #007c91;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        #exerciseContainer {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 4vh 4vw;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            width: 90vw;
+            max-width: 800px;
+            height: 90vh;
+            max-height: 900px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .timer-text {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 600;
+            margin-bottom: 3vh;
+            color: #00838f;
+        }
+
         .circle-container {
             position: relative;
             width: 80vmin;
             height: 80vmin;
-            max-width: min(90vw, 700px);
-            max-height: min(90vw, 700px);
+            max-width: 700px;
+            max-height: 700px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 4vh 0;
-            touch-action: none;
         }
-    
+
         .breathe-circle {
             position: absolute;
             top: 50%;
@@ -98,12 +182,43 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
-            backface-visibility: hidden;
-            perspective: 1000px;
+            transition: all 0.3s ease;
         }
-    
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90%;
+            word-wrap: break-word;
+        }   
+
+        .phase-text, .phase-timer-text {
+            margin: 0;
+            font-size: clamp(24px, 5vw, 40px);
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .phase-timer-text {
+            margin-top: 0.25vh;
+            font-weight: 600;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 4vh;
+        }
+
+        .button-container .button {
+            padding: 2vh 4vw;
+            font-size: clamp(18px, 3vw, 24px);
+            border-radius: 50px;
+            min-width: 120px;
+        }
         .outer-circle {
             position: absolute;
             top: 50%;
@@ -112,40 +227,97 @@
             border-radius: 50%;
             border: 2px solid rgb(255, 88, 88);
             pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backface-visibility: hidden;
-            will-change: transform, opacity;
+            transition: all 0.3s ease;
         }
-    
-        @media (max-width: 768px) and (orientation: portrait) {
-            .circle-container {
-                width: 90vmin;
-                height: 90vmin;
-            }
-    
-            .phase-text, .phase-timer-text {
-                font-size: clamp(20px, 6vw, 32px);
-            }
-    
-            .button-container .button {
-                padding: 2vh 5vw;
-                font-size: clamp(16px, 4vw, 20px);
-            }
+        .outer-circle {
+          z-index: 1;
         }
-    
-        @media (hover: none) and (pointer: coarse) {
-            #startButton:hover {
-                transform: none;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            }
-    
-            .button:hover {
-                transform: none;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            }
+
+        .breathe-circle {
+          z-index: 2;
         }
+            @media screen and (max-width: 768px) {
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: clamp(36px, 8vw, 56px);
+        }
+
+        .tagline {
+            font-size: clamp(16px, 3vw, 20px);
+        }
+
+        #startButton {
+            font-size: clamp(18px, 4vw, 24px);
+            padding: 12px 24px;
+        }
+
+        #formContainer, #exerciseContainer {
+            width: 95%;
+            padding: 3vh 3vw;
+        }
+
+        .circle-container {
+            width: 90vmin;
+            height: 90vmin;
+            margin: 2vh 0;
+        }
+
+        .phase-text, .phase-timer-text {
+            font-size: clamp(20px, 4vw, 32px);
+        }
+
+        .button-container .button {
+            padding: 1.5vh 3vw;
+            font-size: clamp(16px, 3vw, 20px);
+            min-width: 100px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .logo {
+            font-size: clamp(28px, 7vw, 36px);
+        }
+
+        .tagline {
+            font-size: clamp(14px, 2.5vw, 16px);
+        }
+
+        #startButton {
+            font-size: clamp(16px, 3.5vw, 20px);
+            padding: 10px 20px;
+        }
+
+        form label {
+            font-size: clamp(10px, 1.8vw, 14px);
+        }
+
+        input, select {
+            font-size: clamp(10px, 1.6vw, 12px);
+        }
+
+        .button {
+            font-size: clamp(12px, 1.8vw, 16px);
+        }
+
+        .timer-text {
+            font-size: clamp(24px, 5vw, 36px);
+        }
+
+        .phase-text, .phase-timer-text {
+            font-size: clamp(18px, 3.5vw, 28px);
+        }
+
+        .button-container .button {
+            padding: 1.2vh 2.5vw;
+            font-size: clamp(14px, 2.5vw, 18px);
+            min-width: 80px;
+        }
+    }
+
     </style>
-    
 </head>
 <body>
     <div class="header">
