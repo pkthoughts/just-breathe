@@ -110,6 +110,8 @@ class BreathingExercise {
         audio.currentTime = 0;
     }, duration * 1000 / this.speed);
 } 
+
+
   changePhase() {
       
       
