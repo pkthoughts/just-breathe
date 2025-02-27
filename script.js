@@ -200,7 +200,6 @@ const UI = {
         document.querySelector('.start-btn').addEventListener('click', () => this.showScreen('config-modal'));
         document.querySelector('.cancel-btn').addEventListener('click', () => this.showScreen('home-screen'));
         document.querySelector('.exercise-form').addEventListener('submit', function(event) {
-          event.preventDefault();
           setTimeout(() => {
             this.handleFormSubmit(event);
           }, 2000);
