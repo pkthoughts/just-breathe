@@ -112,7 +112,10 @@ body {
 
 /* Exercise Screen */
 .exercise-screen {
-    background: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: white; /* Fallback color */
 }
 
 .exercise-header {
@@ -219,6 +222,9 @@ body {
 
 /* Mobile Styles */
 @media (max-width: 480px) {
+    .exercise-screen {
+        background-size: contain;
+    }
     .app-title {
         font-size: 2rem;
     }
