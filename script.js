@@ -199,11 +199,7 @@ const UI = {
     addEventListeners() {
         document.querySelector('.start-btn').addEventListener('click', () => this.showScreen('config-modal'));
         document.querySelector('.cancel-btn').addEventListener('click', () => this.showScreen('home-screen'));
-        document.querySelector('.exercise-form').addEventListener('submit', function(event) {
-          setTimeout(() => {
-            this.handleFormSubmit(event);
-          }, 2000);
-        }.bind(this));
+         document.querySelector('.exercise-form').addEventListener('submit', this.handleFormSubmit.bind(this));
         document.querySelector('.exit-btn').addEventListener('click', () => {
             if (this.currentExercise) this.currentExercise.cleanup();
             this.showScreen('home-screen');
