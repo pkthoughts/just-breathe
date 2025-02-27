@@ -37,6 +37,7 @@ class BreathingExercise {
     }
 
     start() {
+        this.setBackgroundImage();
         this.playPhaseAudio();
         this.phaseStartTime = Date.now();
         this.updateTotalTimer();
@@ -114,10 +115,16 @@ class BreathingExercise {
 
     updatePhaseDisplay() {
         let phaseName = this.currentPhase;
-        if (phaseName === 'holdInhale' || phaseName === 'holdExhale') {
-            phaseName = 'Hold';
+        switch (this.currentPhase) {
+            case 'holdInhale':
+            case 'holdExhale':
+                phaseName = 'Hold';
+                break;
+            default:
+                break;
         }
         this.phaseNameElement.textContent = phaseName.toUpperCase();
+            
         this.updateCircleColor();
         this.phaseTimerElement.textContent = this.phases[this.currentPhase];
     }
@@ -147,6 +154,7 @@ class BreathingExercise {
     }
 
     cleanup() {
+        document.body.style.backgroundImage = 'none';
         this.stopAudio();
         clearInterval(this.totalInterval);
         cancelAnimationFrame(this.animationFrameId);
@@ -168,6 +176,16 @@ class BreathingExercise {
         this.updatePhaseDisplay();
         this.start();
     }
+
+    setBackgroundImage() {
+        const images = ['images/nature.jpg', 'images/sunrise.jpg','images/valley.jpg','images/waterfall.jpg'];
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+        const exerciseScreen = document.querySelector('.exercise-screen');
+        exerciseScreen.style.backgroundImage = `url('${randomImage}')`;
+        exerciseScreen.style.backgroundSize = 'cover';
+        exerciseScreen.style.backgroundPosition = 'center';
+      }
+      
 }
 
 
