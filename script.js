@@ -56,7 +56,7 @@ class BreathingExercise {
         this.circle.style.strokeDashoffset = offset;
 
         // Update phase timer display
-        const remaining = Math.ceil((phaseDuration - elapsed) / 1000);
+        const remaining = Math.ceil((phaseDuration - elapsed) / speed);
         this.phaseTimerElement.textContent = Math.max(0, remaining);
 
         if (progress >= 1) {
